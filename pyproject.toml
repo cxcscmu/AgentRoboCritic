@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agentrobocritic"
+version = "0.1.0"
+description = "Evaluate multimodal robot-action critics and collect intent-grounded EFE actions"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.10"
+dependencies = ["datasets>=4,<5", "pyarrow>=18", "huggingface_hub>=0.32,<2", "httpx>=0.27,<1", "Pillow>=10.4", "numpy>=1.24", "python-dotenv>=1,<2"]
+
+[project.optional-dependencies]
+efe = ["av>=13"]
+dev = ["pytest>=8", "av>=13"]
+
+[project.scripts]
+arc = "agentrobocritic.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+agentrobocritic = ["prompts/*.txt", "prompts/*.json"]
